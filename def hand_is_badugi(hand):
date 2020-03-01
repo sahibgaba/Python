@@ -1,0 +1,11 @@
+def hand_is_badugi(hand):
+    listofranks=set([x for (x,y) in hand])
+    listofsuits=set([y for (x,y) in hand])
+    if len(listofranks)!=4 or len(listofsuits)!=4:
+        return (False)
+    else:
+        return (True)
+
+hand_is_badugi([('queen', 'hearts'), ('six', 'diamonds'), ('deuce', 'spades'), ('queen','clubs')])
+
+
