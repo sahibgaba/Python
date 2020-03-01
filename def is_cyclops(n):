@@ -1,0 +1,15 @@
+def is_cyclops(n):
+    n=[int(d) for d in str(n)]
+    if not len(n) % 2:
+        return False
+    else:
+        O = n.count(0)
+    if n[int(len(n)/2)] != 0:
+        return False
+    else:
+        if O==1:
+            return True
+        else:
+            return False
+is_cyclops(101)
+
