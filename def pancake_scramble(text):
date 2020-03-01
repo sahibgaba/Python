@@ -1,0 +1,11 @@
+def pancake_scramble(text):
+    n=1
+    while n!=len(text):
+        a=text[n::-1]
+        b=text[n+1:]
+        text=a+b
+        n+=1
+    return(text)
+
+pancake_scramble('ilkka')
+
