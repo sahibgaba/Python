@@ -1,0 +1,9 @@
+def reverse_reversed(items):
+    def backwards(items):
+        items=items[::-1]
+        return items
+    if isinstance(items, list):
+        return list(reverse_reversed(a) for a in backwards(items))
+    return items
+reverse_reversed([5, 2,9, 1, 7, 4, 6, 3, 8])
+
