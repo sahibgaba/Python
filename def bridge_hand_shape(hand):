@@ -1,0 +1,7 @@
+def bridge_hand_shape(hand):
+    listofsuits=[y for (x,y) in hand]
+    return ([listofsuits.count('spades'),listofsuits.count('hearts'),listofsuits.count('diamonds'),listofsuits.count('clubs')])
+
+bridge_hand_shape([('eight', 'spades'), ('king', 'diamonds'), ('ten', 'diamonds'), ('trey', 'diamonds'), ('seven', 'spades'), ('five', 'diamonds'), ('deuce', 'hearts'), ('king', 'spades'), ('jack', 'spades'), ('ten', 'clubs'), ('ace', 'clubs'), ('six', 'diamonds'), ('trey', 'hearts')])
+
+
