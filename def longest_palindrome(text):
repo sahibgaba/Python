@@ -1,0 +1,12 @@
+import itertools
+def longest_palindrome(text):
+    longest=""
+    length=0
+    for a,b in itertools.combinations(range(len(text)+1),2):
+        v=text[a:b]
+        if len(v)>length:
+            if v==v[::-1]:
+                longest=v
+                length=(len(v))
+    return str(longest)
+
