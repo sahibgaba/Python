@@ -1,0 +1,16 @@
+def only_odd_digits(n):
+    x=0
+    onlyodd = True
+    nstring=str(n)
+    while len(nstring)>x:
+        integer = int(nstring[x])
+        x=x+1
+        if integer%2==1:
+            pass
+        else:
+            onlyodd = False
+    return (onlyodd)
+
+only_odd_digits(5)
+
+
