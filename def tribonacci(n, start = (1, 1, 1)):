@@ -1,0 +1,14 @@
+def tribonacci(n, start = (1, 1, 1)):
+    prev, mid, curr = start
+    x=2
+    if n>1:
+        while x<n:
+            prev, mid, curr = mid, curr, prev+mid+curr
+            x=x+1
+        return (curr)
+    elif n==0:
+        return (prev)
+    elif n==1:
+        return (mid)
+tribonacci(10)
+
