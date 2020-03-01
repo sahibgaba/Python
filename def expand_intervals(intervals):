@@ -1,0 +1,13 @@
+def expand_intervals(intervals):
+    a=intervals.split(',')
+    b=[x.split('-') for x in a]
+    for x in range(0,len(b)):
+        if len(b[x])>1:
+            b[x]=list(range(int((b[x])[0]),int((b[x])[1])+1))
+        else:
+            b[x]=[int(b[x][0])]
+    listy=[]
+    for x in range(0,len(b)):
+        listy.extend(b[x])
+    return(listy)
+expand_intervals('1,3-9,12-14,9999')
