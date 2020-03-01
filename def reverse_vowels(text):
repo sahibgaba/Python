@@ -1,0 +1,27 @@
+def reverse_vowels(text):
+  n=0
+  index=[]
+  item=[]
+  while n<len(text):
+    if text[n] in {'a','e','i','o','u','A','E','I','O','U'}:
+      index.append(n)
+      item.append(text[n])
+    else:
+      pass
+    n=n+1
+  index=index[::-1]
+  a=0
+  text2=list(text)
+  for x in index:
+    text2[x]=item[a]
+    a+=1
+  n=0
+  while n<len(text):
+    if text[n].lower()==text[n]:
+      text2[n]=text2[n].lower()
+    else:
+      text2[n]=text2[n].upper()
+    n+=1
+  return(''.join(text2))
+reverse_vowels('sahibGbaa')
+
