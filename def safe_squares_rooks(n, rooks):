@@ -1,0 +1,10 @@
+def safe_squares_rooks(n, rooks):
+    listOfUnsafeRows=[x for (x,y) in rooks]
+    listOfUnsafeCol=[y for (x,y) in rooks]
+    listOfSafe=list(range(0,n))
+    a=set(listOfSafe)-set(listOfUnsafeRows)
+    b = set(listOfSafe) - set(listOfUnsafeCol)
+    return(len(a)*len(b))
+
+safe_squares_rooks(2,[(1,1)])
+
