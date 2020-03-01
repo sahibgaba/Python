@@ -1,0 +1,6 @@
+def detab(text, n = 8, sub = ' '):
+  a = n * sub
+  b=[c.replace("\t",a) for c in text]
+  return "".join(b)
+detab('Hello\tthereyou\tworld')
+
