@@ -1,0 +1,454 @@
+def ryerson_letter_grade(ptc):
+    if ptc <= 49:
+        return "F"
+    elif ptc <= 52 and ptc >= 50:
+        return "D-"
+    elif ptc <= 56 and ptc >= 53:
+        return "D"
+    elif ptc <= 59 and ptc >= 57:
+        return "D+"
+    elif ptc <= 62 and ptc >= 50:
+        return "C-"
+    elif ptc <= 66 and ptc >= 63:
+        return "C"
+    elif ptc <= 69 and ptc >= 67:
+        return "C+"
+    elif ptc <= 72 and ptc >= 70:
+        return "B-"
+    elif ptc <= 76 and ptc >= 73:
+        return "B"
+    elif ptc <= 79 and ptc >= 77:
+        return "B+"
+    elif ptc <= 84 and ptc >= 80:
+        return "A-"
+    elif ptc <= 89 and ptc >= 85:
+        return "A"
+    else:
+        return "A+"
+
+
+ptc = 10
+ryerson_letter_grade(ptc)
+
+
+def is_ascending(items):
+    if items != "[]":
+        items=str(items)
+        items= list(map(int,(items[1:-1]).split(",")))
+        if len(items) != len(set(items)):
+            return False
+        else:
+            return bool(items == sorted(items))
+    else:
+        return True
+
+
+items = [1,2,3,4]
+is_ascending(items)
+
+
+def only_odd_digits(n):
+    x=0
+    onlyodd = True
+    nstring=str(n)
+    while len(nstring)>x:
+        integer = int(nstring[x])
+        x=x+1
+        if integer%2==1:
+            pass
+        else:
+            onlyodd = False
+    return (onlyodd)
+
+only_odd_digits(5)
+
+
+def riffle(items, out=True):
+    if items != "[]":
+            slice_1 = int(((len(items)) / 2))
+            slice_2 = int(len(items) + 1)
+            items_1 = items[0:slice_1]
+            items_2 = items[slice_1:slice_2]
+            items_3 = []
+            x = 0
+            # riffle list
+            if out is True:
+                while len(items_3) < len(items):
+                    items_3.append(items_1[x])
+                    items_3.append(items_2[x])
+                    x = x + 1
+                return(items_3)
+            else:
+                while len(items_3) < len(items):
+                    items_3.append(items_2[x])
+                    items_3.append(items_1[x])
+                    x = x + 1
+                return(items_3)
+    else:
+        return([])
+
+
+items = [1,2,3,4]
+riffle(items, out=True)
+
+
+def all_cyclic_shifts(text):
+    n=0
+    list1 = []
+    while n<len(text):
+        list_of_text=list(text)
+        list_of_text.append(list_of_text[0])
+        list_of_text.remove(list_of_text[0])
+        text="".join(list_of_text)
+        list1.append(text)
+        n=n+1
+    return (sorted(set(list1)))
+
+
+text= "xxxxxx"
+all_cyclic_shifts(text)
+
+
+def running_median_of_three(items):
+    items2=tuple(items)
+    n=3
+    while len(items)>=n:
+        running_median=items2[(n-3):n]
+        running_median=sorted(running_median)
+        items[n-1]=running_median[1]
+        n=n+1
+    return(items)
+
+running_median_of_three([5, 2, 9, 1, 7, 4, 6, 3, 8])
+
+
+def taxi_zum_zum(moves):
+    i=0
+    x=0
+    y=0
+    direction=0
+    forward=[x for x in range(-100,100,4)]
+    right=[x+1 for x in range(-100,100,4)]
+    backward=[x+2 for x in range(-100,100,4)]
+    left=[x+3 for x in set(range(-100,100,4))]
+    while i<len(moves):
+        if moves[i]== 'R':
+            direction+=1
+        elif moves[i]=='L':
+            direction-=1
+        elif moves[i]=='F':
+            if direction in forward:
+                y+=1
+            elif direction in right:
+                x-=1
+            elif direction in backward:
+                y-=1
+            elif direction in left:
+                x+=1
+        i=i+1
+    coordinates=(x,y)
+    return (coordinates)
+
+taxi_zum_zum('FFLLLFRLFLRFRLRRL')
+
+
+def squares_intersect(s1,s2):
+    hs1bl=s1[0]
+    hs1br=s1[0]+s1[2]
+    vs1bl=s1[1]
+    vs1tr=s1[1]+s1[2]
+    hs2bl=s2[0]
+    hs2br=s2[0]+s2[2]
+    vs2bl=s2[1]
+    vs2tr=s2[1]+s2[2]
+    if hs1bl<hs2bl:
+        if hs1br>=hs2bl:
+            horizontalintersection=True
+        else:
+            horizontalintersection=False
+    elif hs2bl<hs1bl:
+        if hs2br>=hs1bl:
+            horizontalintersection=True
+        else:
+            horizontalintersection=False
+    elif hs2bl==hs1bl:
+        horizontalintersection=True
+    if vs1bl < vs2bl:
+        if vs1tr >= vs2bl:
+            verticalintersection = True
+        else:
+            verticalintersection = False
+    elif vs2bl < vs1bl:
+        if vs2tr >= vs1bl:
+            verticalintersection = True
+        else:
+            verticalintersection = False
+    elif vs2bl == vs2bl:
+        verticalintersection = True
+    if verticalintersection==True and horizontalintersection==True:
+        return (True)
+    else:
+        return (False)
+
+squares_intersect((3000,6000,1000),(8000,3000,5000))
+
+def detab(text, n = 8, sub = ' '):
+  a = n * sub
+  b=[c.replace("\t",a) for c in text]
+  return "".join(b)
+detab('Hello\tthereyou\tworld')
+
+def double_until_all_digits(n,giveup=1000):
+    x=0
+    digits=set('0123456789')
+    while set(str(n))!=digits:
+        if x>=giveup:
+            return -1
+        else:
+            n=n*2
+            x=x+1
+    return (x)
+
+double_until_all_digits(1,1000)
+
+
+def remove_after_kth(items,k=1):
+    i=0
+    finalitems=[]
+    while i<len(items):
+        if finalitems.count(items[i])<k:
+            finalitems.append(items[i])
+            i+=1
+        else:
+            i+=1
+    return finalitems
+
+
+remove_after_kth(['tom', 42, 'bob', 'bob', 99, 'bob', 'tom', 'tom', 99],0)
+
+def reverse_reversed(items):
+    def backwards(items):
+        items=items[::-1]
+        return items
+    if isinstance(items, list):
+        return list(reverse_reversed(a) for a in backwards(items))
+    return items
+reverse_reversed([5, 2,9, 1, 7, 4, 6, 3, 8])
+
+def count_distinct_sums_and_products(items):
+    n=0
+    z=0
+    list=[]
+    while len(items)>z:
+        while len(items)>n:
+            a=items[z]
+            b=items[n]
+            list.extend([a*b])
+            list.extend([a+b])
+            n=n+1
+        z=z+1
+        n=0
+    return (len(set(list)))
+items= []
+count_distinct_sums_and_products(items)
+
+def hand_is_badugi(hand):
+    listofranks=set([x for (x,y) in hand])
+    listofsuits=set([y for (x,y) in hand])
+    if len(listofranks)!=4 or len(listofsuits)!=4:
+        return (False)
+    else:
+        return (True)
+
+hand_is_badugi([('queen', 'hearts'), ('six', 'diamonds'), ('deuce', 'spades'), ('queen','clubs')])
+
+
+def reverse_ascending_sublists(items):
+    if items==[]:
+        items2 = items + [0, 0]
+    else:
+        items2= items+[(items[-1]-1),(items[-1]-1)]
+    listy=[]
+    listy2=[]
+    n=0
+    while n<len(items2)-2:
+        while items2[n+1]>items2[n]:
+            listy.append(items2[n])
+            n=n+1
+        listy.append(items2[n])
+        reverselisty=sorted(listy,reverse=True)
+        listy2.extend(reverselisty)
+        n=n+1
+        listy=[]
+    return (listy2)
+
+reverse_ascending_sublists([5, 7, 10, 4, 2, 7, 8, 1, 3])
+
+
+def bridge_hand_shape(hand):
+    listofsuits=[y for (x,y) in hand]
+    return ([listofsuits.count('spades'),listofsuits.count('hearts'),listofsuits.count('diamonds'),listofsuits.count('clubs')])
+
+bridge_hand_shape([('eight', 'spades'), ('king', 'diamonds'), ('ten', 'diamonds'), ('trey', 'diamonds'), ('seven', 'spades'), ('five', 'diamonds'), ('deuce', 'hearts'), ('king', 'spades'), ('jack', 'spades'), ('ten', 'clubs'), ('ace', 'clubs'), ('six', 'diamonds'), ('trey', 'hearts')])
+
+import itertools
+def longest_palindrome(text):
+    longest=""
+    length=0
+    for a,b in itertools.combinations(range(len(text)+1),2):
+        v=text[a:b]
+        if len(v)>length:
+            if v==v[::-1]:
+                longest=v
+                length=(len(v))
+    return str(longest)
+
+def safe_squares_rooks(n, rooks):
+    listOfUnsafeRows=[x for (x,y) in rooks]
+    listOfUnsafeCol=[y for (x,y) in rooks]
+    listOfSafe=list(range(0,n))
+    a=set(listOfSafe)-set(listOfUnsafeRows)
+    b = set(listOfSafe) - set(listOfUnsafeCol)
+    return(len(a)*len(b))
+
+safe_squares_rooks(2,[(1,1)])
+
+from itertools import permutations
+def three_summers(items, goal):
+    a=list(permutations(items,3))
+    b={x+y+z for (x,y,z) in a}
+    if goal in b:
+        return True
+    else:
+        return False
+three_summers([10, 11, 16, 18, 19],40)
+
+def pancake_scramble(text):
+    n=1
+    while n!=len(text):
+        a=text[n::-1]
+        b=text[n+1:]
+        text=a+b
+        n+=1
+    return(text)
+
+pancake_scramble('ilkka')
+
+def reverse_vowels(text):
+  n=0
+  index=[]
+  item=[]
+  while n<len(text):
+    if text[n] in {'a','e','i','o','u','A','E','I','O','U'}:
+      index.append(n)
+      item.append(text[n])
+    else:
+      pass
+    n=n+1
+  index=index[::-1]
+  a=0
+  text2=list(text)
+  for x in index:
+    text2[x]=item[a]
+    a+=1
+  n=0
+  while n<len(text):
+    if text[n].lower()==text[n]:
+      text2[n]=text2[n].lower()
+    else:
+      text2[n]=text2[n].upper()
+    n+=1
+  return(''.join(text2))
+reverse_vowels('sahibGbaa')
+
+def is_cyclops(n):
+    n=[int(d) for d in str(n)]
+    if not len(n) % 2:
+        return False
+    else:
+        O = n.count(0)
+    if n[int(len(n)/2)] != 0:
+        return False
+    else:
+        if O==1:
+            return True
+        else:
+            return False
+is_cyclops(101)
+
+def scrabble_value(word, multipliers = None):
+  listy=[]
+  coop=0
+  dictionary={'a':1, 'b':3, 'c':3, 'd':2, 'e':1, 'f':4, 'g':2, 'h':4, 'i':1, 'j':8,'k':5, 'l':1, 'm':3, 'n':1, 'o':1, 'p':3, 'q':10, 'r':1, 's':1, 't':1, 'u':1,'v':4, 'w':4, 'x':8, 'y':4, 'z':10 }
+  while coop<len(word):
+    listy.append(dictionary[word[coop]])
+    coop+=1
+  if multipliers!= None:
+    finalsum=sum([a*b for a,b in zip(listy,multipliers)])
+  else:
+    finalsum=sum(listy)
+  return(finalsum)
+scrabble_value('world',[1, 3, 1, 1, 1])
+
+def tribonacci(n, start = (1, 1, 1)):
+    prev, mid, curr = start
+    x=2
+    if n>1:
+        while x<n:
+            prev, mid, curr = mid, curr, prev+mid+curr
+            x=x+1
+        return (curr)
+    elif n==0:
+        return (prev)
+    elif n==1:
+        return (mid)
+tribonacci(10)
+
+def is_permutation(items,n):
+  items=set(items)
+  listy=[x for x in range(1,(n+1))]
+  if list(items)==listy:
+    return(True)
+  else:
+    return(False)
+is_permutation([7, 4, 2, 3, 1, 3, 6],7)
+
+def first_missing_positive(items):
+  for var in range(1,(sorted(items))[-1]):
+    if var in items:
+      pass
+    else:
+        return var
+  return (1,(sorted(items))[-1]+1)
+
+first_missing_positive([7, 5, 2, 3, 10])
+
+def disemvowel(text):
+    a=text.replace('ay','a')
+    b=a.replace('ya','a')
+    c=b.replace('ey','e')
+    d=c.replace('ye','e')
+    e=d.replace('iy','i')
+    f=e.replace('yi','i')
+    g=f.replace('oy','o')
+    h=g.replace('yo','o')
+    i=h.replace('uy','u')
+    j=i.replace('yu','u')
+    k=[x for x in j if x not in {'a','e','i','o','u'}]
+    return(''.join(k))
+
+disemvowel('yay')
+
+def expand_intervals(intervals):
+    a=intervals.split(',')
+    b=[x.split('-') for x in a]
+    for x in range(0,len(b)):
+        if len(b[x])>1:
+            b[x]=list(range(int((b[x])[0]),int((b[x])[1])+1))
+        else:
+            b[x]=[int(b[x][0])]
+    listy=[]
+    for x in range(0,len(b)):
+        listy.extend(b[x])
+    return(listy)
+expand_intervals('1,3-9,12-14,9999')
