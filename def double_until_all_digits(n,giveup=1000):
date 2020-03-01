@@ -1,0 +1,15 @@
+def double_until_all_digits(n,giveup=1000):
+    x=0
+    digits=set('0123456789')
+    while set(str(n))!=digits:
+        if x>=giveup:
+            return -1
+        else:
+            n=n*2
+            x=x+1
+    return (x)
+
+double_until_all_digits(1,1000)
+
+
+
