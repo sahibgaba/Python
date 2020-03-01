@@ -1,0 +1,34 @@
+def is_permutation(items,n):
+  items=set(items)
+  listy=[x for x in range(1,(n+1))]
+  if list(items)==listy:
+    return(True)
+  else:
+    return(False)
+is_permutation([7, 4, 2, 3, 1, 3, 6],7)
+
+def first_missing_positive(items):
+  for var in range(1,(sorted(items))[-1]):
+    if var in items:
+      pass
+    else:
+        return var
+  return (1,(sorted(items))[-1]+1)
+
+first_missing_positive([7, 5, 2, 3, 10])
+def disemvowel(text):
+    a=text.replace('ay','a')
+    b=a.replace('ya','a')
+    c=b.replace('ey','e')
+    d=c.replace('ye','e')
+    e=d.replace('iy','i')
+    f=e.replace('yi','i')
+    g=f.replace('oy','o')
+    h=g.replace('yo','o')
+    i=h.replace('uy','u')
+    j=i.replace('yu','u')
+    k=[x for x in j if x not in {'a','e','i','o','u'}]
+    return(''.join(k))
+
+disemvowel('yay')
+
