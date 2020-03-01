@@ -1,0 +1,17 @@
+def count_distinct_sums_and_products(items):
+    n=0
+    z=0
+    list=[]
+    while len(items)>z:
+        while len(items)>n:
+            a=items[z]
+            b=items[n]
+            list.extend([a*b])
+            list.extend([a+b])
+            n=n+1
+        z=z+1
+        n=0
+    return (len(set(list)))
+items= []
+count_distinct_sums_and_products(items)
+
