@@ -1,0 +1,17 @@
+def all_cyclic_shifts(text):
+    n=0
+    list1 = []
+    while n<len(text):
+        list_of_text=list(text)
+        list_of_text.append(list_of_text[0])
+        list_of_text.remove(list_of_text[0])
+        text="".join(list_of_text)
+        list1.append(text)
+        n=n+1
+    return (sorted(set(list1)))
+
+
+text= "xxxxxx"
+all_cyclic_shifts(text)
+
+
