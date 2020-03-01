@@ -1,0 +1,21 @@
+def reverse_ascending_sublists(items):
+    if items==[]:
+        items2 = items + [0, 0]
+    else:
+        items2= items+[(items[-1]-1),(items[-1]-1)]
+    listy=[]
+    listy2=[]
+    n=0
+    while n<len(items2)-2:
+        while items2[n+1]>items2[n]:
+            listy.append(items2[n])
+            n=n+1
+        listy.append(items2[n])
+        reverselisty=sorted(listy,reverse=True)
+        listy2.extend(reverselisty)
+        n=n+1
+        listy=[]
+    return (listy2)
+
+reverse_ascending_sublists([5, 7, 10, 4, 2, 7, 8, 1, 3])
+
